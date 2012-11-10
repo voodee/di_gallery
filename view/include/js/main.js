@@ -227,7 +227,7 @@ var cube = (function() {
 
     $('#MoveOnAlbum').click(function(e) {
       e.preventDefault();
-      if (nextgalleryactive) return;
+      //if (nextgalleryactive) return;
       move_on_album();
     });
 
@@ -403,8 +403,8 @@ var cube = (function() {
     name_gallery = id_gallery;
     nextgalleryactive = true;
     //
-    $('#MoveOnAlbum').find('.CubeZoom').hide();
-    $('#MoveOnAlbum').append($loading);
+    //$cube.$('#MoveOnAlbum').find('.CubeZoom').hide();
+    //$('#MoveOnAlbum').append($loading);
     //
     $.ajax({
       type: 'POST',
