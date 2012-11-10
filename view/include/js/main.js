@@ -648,8 +648,3 @@ var cube = (function() {
     // export api
     window.fullScreenApi = fullScreenApi;
 })();
-
-
-
-
-var t;
