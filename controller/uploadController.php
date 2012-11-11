@@ -102,7 +102,6 @@
         header('Location: http://'.$this('script_url').'log/');
         exit();
       }
-      ini_set('upload_max_filesize', '20M');
       require_once('include/jQuery-File-Upload/upload.class.php');
       $upload_handler = new UploadHandler();
       exit();

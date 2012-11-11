@@ -1,6 +1,6 @@
 $(document).ready(function() {
   if (Modernizr.csstransforms3d) {
-    if (fullScreenApi.supportsFullScreen) {
+    if (fullScreenApi.supportsFullScreen && !((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))) {
       $('#CubeStart').show();
       $('#CubeStart').find('a').click(function(e) {
         e.preventDefault();
@@ -16,7 +16,6 @@ $(document).ready(function() {
           fullScreenApi.requestFullScreen(document.getElementById('fullscreen'));
         }
       });
-      
     } else {
       cube.init();
     }
@@ -158,7 +157,7 @@ var cube = (function() {
     path_photo = base_url + 'view/images/',
     $cube = $('#AreaCube'),
     el = $('<div></div>'),
-    transformProps = '-ms-transform -moz-transform -webkit-transform -o-transform transform'.split(' '),
+    transformProps = '-ms-transform -moz-transform -webkit-transform -khtml-transform -o-transform transform'.split(' '),
     transformProp = (function() {
       for(var i = 0, l = transformProps.length; i < l; ++i)
         if(el.css(transformProps[i]) !== undefined) return transformProps[i];
@@ -189,7 +188,9 @@ var cube = (function() {
                      .append($('<div></div>').addClass('BoxTransitionCardFront'))
                      .append($('<div></div>').addClass('BoxTransitionCardBack')),
     $loading =  $('<div></div>').addClass('ListPhoto3DButtonLoad').activity({segments: 8, steps: 3, opacity: 0.3, width: 3, space: 0, length: 5, color: '#fff', speed: 1.5}),
-    name_gallery = '';
+    name_gallery = '',
+    timerslideshow = false,
+    timerslideshowactive = false;
 
   init = function() {
     if ($.browser.chrome) hard = true;
@@ -283,6 +284,39 @@ var cube = (function() {
           $('<a href=\'#\'></a>').data('minTranslate', Math.floor(Math.random( ) * (101))*-1).addClass('invisible')
         );
     });
+    
+    /* New Buttons */
+    $('.BGPrev, .BGNext').on('proximity.Buttons', { max: 300, fireOutOfBounds : true }, function( event, proximity, distance ) {
+      $(this).css({'opacity': ( proximity * 0.6 )});
+    });
+    $('.BGPrev').click(function(e) {
+      e.preventDefault();  
+      $('.BGFilter').click();
+      if ($.inArray($('.jThumbnailScroller').data('pic'), gallery.photo) > 0)     
+        get_photo( gallery.photo[$.inArray($('.jThumbnailScroller').data('pic'), gallery.photo) - 1] ); 
+      else 
+        get_photo( gallery.photo[gallery.photo.length - 1] ); 
+    });
+    $('.BGNext').click(function(e) {
+      e.preventDefault();  
+      $('.BGFilter').click();
+      if ($.inArray($('.jThumbnailScroller').data('pic'), gallery.photo) < gallery.photo.length - 1 || $.inArray($('.jThumbnailScroller').data('pic'), gallery.photo) < 0)     
+        get_photo( gallery.photo[$.inArray($('.jThumbnailScroller').data('pic'), gallery.photo) + 1] ); 
+      else 
+        get_photo( gallery.photo[0] ); 
+    });
+    $('.BGButtonPlay').show().click(function(e) {
+      e.preventDefault();
+      if ($(this).hasClass('BGButtonPlayStop')) {
+        $(this).removeClass('BGButtonPlayStop'); 
+        timerslideshow = false;
+      } else {
+        $(this).addClass('BGButtonPlayStop');
+        timerslideshow = true;
+        $('.BGNext').click();
+      }
+    });
+    /* New Buttons End*/
 
     ///// Hard test
     if (hard)
@@ -323,6 +357,7 @@ var cube = (function() {
       if ($.url().fparam('photo') != undefined && $.url().fparam('photo') != '') {
         get_photo($.url().fparam('photo'));
         get_gallery($('#ListGallerys li a:first').data('id_gallery'));
+        $('.BGButtonPlay, .BGPrev, .BGNext').hide();
         return;
       }
       if ($.url().fparam('gallery') != undefined && $.url().fparam('gallery') != '')
@@ -337,9 +372,10 @@ var cube = (function() {
   },
 
   get_photo = function(name) {
+    $('.BGButtonPlay, .BGPrev, .BGNext').show();
     window.location.hash = 'photo=' + name;
     $('.jThumbnailScroller').find('.jTscrollerContainer').remove();
-    $('.jThumbnailScroller').prepend('<div class=\'jTscrollerContainer\'><div class=\'jTscroller\'></div></div>');
+    $('.jThumbnailScroller').prepend('<div class=\'jTscrollerContainer\'><div class=\'jTscroller\'></div></div>').data('pic', name);
     $('#Main').hide();
     $('#BGLoading').show();
     $('#BG').find('.jTscroller').empty().append(
@@ -354,6 +390,16 @@ var cube = (function() {
           .load(function() {
             $('#BG').show().thumbnailScroller({scrollerOrientation: 'vertical'});
             $('#BGLoading').hide();
+            if (timerslideshow) {
+              $('.BGButtonZoom').click();
+              if (!timerslideshowactive) {
+                timerslideshowactive = true;
+              setTimeout(function() {
+                if (timerslideshow && $('#BG').is(':visible')) $('.BGNext').click();
+                timerslideshowactive = false;
+              }, 5000);
+              }
+            }
           })
           .attr('src', path_photo + name + '/0/' + (($(document).height() < $(window).height()) ? $(document).height() : $(window).height()) + '/')
         );

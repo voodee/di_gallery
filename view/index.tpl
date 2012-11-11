@@ -5,48 +5,18 @@
   </div>
   <div class='BGNoScroll'></div>
   <div class='BGFilter'></div>
-  <a href='#' class='BGButtonZoom BGButtonZoomFull'>Зум</a>
+  <a href='#' class='BGButtonZoom BGButtonZoomFull' title='Зум'></a>
+  <a href='#' class='BGButtonPlay' title='Слайдшоу'></a>
+  <span class='BGPrev' title='Предыдущая' style='left: 20px;'></span><span class='BGNext' title='Следующая' style='right: 20px;'></span>
 </div>
 <div id='BGLoading'></div>
 <div role='main' id='Main'>
   <section id='AreaCube'>
     <article>
       <ul class='ListPhoto3D'>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
         <li class='ListPhoto3DButton'><a href='#about' id='MoveOnAbout'><p class='CubeZoom'>об авторе<span>&#8592;</span></p></a></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li></li><li></li><li></li><li></li>
         <li class='ListPhoto3DButton'><a href='#album' id='MoveOnAlbum'><p class='CubeZoom'>все галереи<span>&#8594;</span></p></a></li>
       </ul>
     </article>
@@ -64,12 +34,12 @@
       {/foreach}
       {/if}
       </ul>
-      <p><a href='#' class='MoveOnMain'>&#8592; вернуться к просмотру</a></p>
+      <p><a href='#' class='MoveOnMain'>&#8592; <span>вернуться к просмотру</span></a></p>
     </article>
     <article id='CubeAbout'>
       <div class='CubeText'>
         {$text}
-        <p><a href='#' class='MoveOnMain'>вернуться к просмотру &#8594;</a></p>
+        <p><a href='#' class='MoveOnMain'><span>вернуться к просмотру</span> &#8594;</a></p>
       </div>
     </article>
   </section>

@@ -450,6 +450,10 @@ class UploadHandler
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
+        ////////////
+        $_res = Core::inst()->album->add_photo($file->name, $_REQUEST['gallery_id']);
+        if (isset($_res['error']) && $_res['error']) return $file;
+        ////////////
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
@@ -483,10 +487,6 @@ class UploadHandler
                 if ($this->options['orient_image']) {
                     $this->orient_image($file_path);
                 }
-                ////////////
-                $_res = Core::inst()->album->add_photo($file->name, $_REQUEST['gallery_id']);
-                if (isset($_res['error']) && $_res['error']) return $file;
-                ////////////
                 $file->url = $this->get_download_url($file->name);
                 foreach($this->options['image_versions'] as $version => $options) {
                     if ($this->create_scaled_image($file->name, $version, $options)) {
