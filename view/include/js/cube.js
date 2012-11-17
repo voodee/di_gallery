@@ -75,12 +75,13 @@ var precube = (function() {
           cube.init();
           fullScreenApi.requestFullScreen(document.getElementById('fullscreen'));
         });
-        $(window).keyup(function(event) {
-          if (event.keyCode == 122) {
-            event.preventDefault();
+        var first_resize = false;
+        if ((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height)) first_resize = true;
+        $(window).resize(function() {
+          if (!first_resize && ((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))) { 
+            first_resize = true;
             $('#CubeStart').hide();
             cube.init();
-            fullScreenApi.requestFullScreen(document.getElementById('fullscreen'));
           }
         });
       } else 
