@@ -139,7 +139,13 @@
       ');
       
       $query = mysql_query('INSERT INTO `di.usermeta` (`usermeta_user_id`, `usermeta_key`, `usermeta_val`) VALUES
-(1, \'text\', \'<p><span class="wysiwyg-color-red">Мнение автора может не совпадать с его точкой зрения</span></p>\n<h2>О скрипте</h2>\n<a rel="nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ru"><img alt="Creative Commons" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a>\n<br>\nЭто произведение доступно по лицензии <a rel="nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>\n<br><br><a rel="nofollow" target="_blank" href="https://github.com/voodee/di_gallery">Исходники</a>&nbsp;|&nbsp;<a rel="nofollow" target="_blank" href="http://photo.voodee.ru">демонстрация</a><br><br>\nСайт автора: <a rel="nofollow" target="_blank" href="http://voodee.ru/">http://voodee.ru/</a>\');');
+(1, \'text\', \'<p><span class="wysiwyg-color-red">Мнение автора может не совпадать с его точкой зрения // Пелевин</span></p>
+<h2>О скрипте</h2>
+<a rel="nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/deed.ru"><img alt="Creative Commons" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a>
+<br>
+Это произведение доступно по лицензии <a rel="nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>
+<br><br><a rel="nofollow" target="_blank" href="https://github.com/voodee/di_gallery">Исходники</a>&nbsp;|&nbsp;<a rel="nofollow" target="_blank" href="http://photo.voodee.ru">демонстрация</a><br><br>
+Сайт автора: <a rel="nofollow" target="_blank" href="http://voodee.ru/">http://voodee.ru/</a>\');');
       header('Location: '.$script_url.'log/');
       exit('0');
     }
