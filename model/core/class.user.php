@@ -1,7 +1,7 @@
 <?php
   class di_user {
     private $logged_in = false;
-    private $tel_code_acess = array(7, 380);
+    private $tel_code_acess = array(7, 375, 380);
     public $user_id = false;
     private $name = array();
     private $info = array();

@@ -7,7 +7,7 @@
       mysql_select_db(Core::inst()->bdname) or die (mysql_error());
       mysql_query("set character_set_client = 'utf8'");
       mysql_query("set character_set_results = 'utf8'");
-      mysql_query("set collation_connection = 'utf8mb4_unicode_ci'");
+      mysql_query("set collation_connection = 'utf8_unicode_ci'");
     }
 
     function query() {

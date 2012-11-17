@@ -26,9 +26,10 @@
   foreach(array(
     '../view/cache/',
     '../view/templates_c/',
+    '../view/upload/images/',
     '../view/upload/images/cache/',
     '../view/upload/images/thumbnail/',
-    'data/'
+    '../model/data/'
     ) as $file) 
     if (substr(sprintf('%o', fileperms($file)), -4) != '0777') $errors[] = 'Папка "'.preg_replace('/\.\.\//', '', $file).'" требует права 0777'; 
   

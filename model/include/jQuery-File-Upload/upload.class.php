@@ -450,10 +450,6 @@ class UploadHandler
         $file->name = $this->trim_file_name($name, $type, $index, $content_range);
         $file->size = $this->fix_integer_overflow(intval($size));
         $file->type = $type;
-        ////////////
-        $_res = Core::inst()->album->add_photo($file->name, $_REQUEST['gallery_id']);
-        if (isset($_res['error']) && $_res['error']) return $file;
-        ////////////
         if ($this->validate($uploaded_file, $file, $error, $index)) {
             $this->handle_form_data($file, $index);
             $upload_dir = $this->get_upload_path();
@@ -507,6 +503,12 @@ class UploadHandler
             $file->size = $file_size;
             $this->set_file_delete_properties($file);
         }
+        ////////////
+        if (!isset($file->error)) {
+          $_res = Core::inst()->album->add_photo($file->name, $_REQUEST['gallery_id']);
+          if (isset($_res['error']) && $_res['error']) $file->error = 'abort v2';
+        }
+        ////////////
         return $file;
     }
 

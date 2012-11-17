@@ -10,14 +10,15 @@
   <script src='{$l}view/include/js/libs/jquery.mousewheel.min.js'></script>
   <script src='{$l}view/include/js/libs/jquery.sbscroller.js'></script>
   <script src='{$l}view/include/js/libs/customcursor.js'></script>
+  <script src='{$l}view/include/js/plugins.js'></script>
   
   <script>var base_url = '{$l}';</script>
-  <script src='{$l}view/include/js/plugins.js'></script>
+  <script src='{$l}view/include/js/cube.min.js'></script>
   <script src='{$l}view/include/js/main.js'></script>
  
   {literal}
   <script>
-    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    var _gaq=[['_setAccount','UA-XXXXXXXX-X'],['_trackPageview']];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
     g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
     s.parentNode.insertBefore(g,s)}(document,'script'));

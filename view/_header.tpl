@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!--  ╭∩╮（︶︿︶）╭∩╮ VooDee.ru //-->
 <!--[if lt IE 7]>      <html class='no-js lt-ie9 lt-ie8 lt-ie7'> <![endif]-->
 <!--[if IE 7]>         <html class='no-js lt-ie9 lt-ie8'> <![endif]-->
 <!--[if IE 8]>         <html class='no-js lt-ie9'> <![endif]-->
 <!--[if gt IE 8]><!--> <html class='no-js'> <!--<![endif]-->
+<!--  ╭∩╮（︶︿︶）╭∩╮ VooDee.ru //-->
   <head>
     <meta charset='utf-8'>
     <title>{if $title != ''}{$title} | {/if}{Core::inst()->site_name}</title>
