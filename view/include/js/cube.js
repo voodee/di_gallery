@@ -68,14 +68,15 @@ var precube = (function() {
 
     if (Modernizr.csstransforms3d && !jQuery.browser.mobile) {
       if (fullScreenApi.supportsFullScreen && !((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))) {
+        var first_resize = false;
         $('#CubeStart').show();
         $('#CubeStart').find('a').click(function(e) {
           e.preventDefault();
+          first_resize = true;
           $('#CubeStart').hide();
           cube.init();
           fullScreenApi.requestFullScreen(document.getElementById('fullscreen'));
         });
-        var first_resize = false;
         if ((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height)) first_resize = true;
         $(window).resize(function() {
           if (!first_resize && ((window.fullScreen) || (window.innerWidth == screen.width && window.innerHeight == screen.height))) { 
@@ -580,6 +581,8 @@ var cube = (function() {
                 .data('translateval', $(this).closest('a').data('minTranslate'))
             );
             $new_replace_box.remove();
+            //t = $(this).closest('a').find('img:not(:last)');
+            //$(this).closest('a').find('img:not(:last)').remove();
             on_animated();
           }
         });
@@ -696,3 +699,4 @@ var cube = (function() {
 
   return { init : init };
 })();
+//var t = [];
