@@ -579,10 +579,9 @@ var cube = (function() {
                 .css(_css)
                 .data('scaleval', 1)
                 .data('translateval', $(this).closest('a').data('minTranslate'))
-            );
+            )
+            .find('img:not(:last)').remove();
             $new_replace_box.remove();
-            //t = $(this).closest('a').find('img:not(:last)');
-            //$(this).closest('a').find('img:not(:last)').remove();
             on_animated();
           }
         });
@@ -699,4 +698,3 @@ var cube = (function() {
 
   return { init : init };
 })();
-//var t = [];
