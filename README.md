@@ -1,7 +1,8 @@
-Demo
+Demo & Description
 ----
 
 + http://photo.voodee.ru
++ http://habrahabr.ru/post/159851/
 
 Authors
 -------
