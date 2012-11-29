@@ -9,7 +9,6 @@
     <title>{if $title != ''}{$title} | {/if}{Core::inst()->site_name}</title>
     <meta name='description' content=''>
     <meta name='viewport' content='width=device-width'>
-    <meta name='SKYPE_TOOLBAR' content='SKYPE_TOOLBAR_PARSER_COMPATIBLE' />
     
     <link rel='stylesheet' href='{$l}view/include/css/normalize.css'>
     <link rel='stylesheet' href='{$l}view/include/css/main.css'>
